@@ -138,7 +138,7 @@
 ;; @param vault-id: The unique identifier of the vault
 (define-read-only (is-vault-unlocked (vault-id uint))
   (match (map-get? vaults { vault-id: vault-id })
-    vault (>= block-height (get unlock-height vault))
+    vault (>= stacks-block-height (get unlock-height vault))
     false
   )
 )
@@ -233,13 +233,13 @@
     (
       (vault-id (+ (var-get vault-nonce) u1))  ;; Generate new unique ID
       (sender tx-sender)
-      (lock-duration (- unlock-height block-height))
+      (lock-duration (- unlock-height stacks-block-height))
     )
     ;; Validation: amount must be positive
     (asserts! (> amount u0) err-invalid-amount)
     
     ;; Validation: unlock height must be in the future
-    (asserts! (> unlock-height block-height) err-invalid-unlock-time)
+    (asserts! (> unlock-height stacks-block-height) err-invalid-unlock-time)
     
     ;; Transfer STX from user to contract
     ;; This is where the actual locking happens
@@ -252,7 +252,7 @@
         owner: sender,
         amount: amount,
         unlock-height: unlock-height,
-        created-at: block-height,
+        created-at: stacks-block-height,
         withdrawn: false,
         cancelled: false,
         note: note,
@@ -302,7 +302,7 @@
       amount: amount,
       unlock-height: unlock-height,
       lock-duration: lock-duration,
-      created-at: block-height
+      created-at: stacks-block-height
     })
     
     ;; Return the new vault ID to the user
@@ -361,7 +361,7 @@
       owner: sender,
       amount: amount,
       new-total: new-total,
-      added-at: block-height
+      added-at: stacks-block-height
     })
     
     (ok new-total)
@@ -403,7 +403,7 @@
       vault-id: vault-id,
       owner: sender,
       amount-returned: (get amount vault),
-      cancelled-at: block-height
+      cancelled-at: stacks-block-height
     })
     
     (ok (get amount vault))
@@ -432,7 +432,7 @@
     (asserts! (not (get cancelled vault)) err-vault-cancelled)
     
     ;; Validation: vault must be unlocked
-    (asserts! (>= block-height (get unlock-height vault)) err-still-locked)
+    (asserts! (>= stacks-block-height (get unlock-height vault)) err-still-locked)
     
     ;; Transfer STX from contract back to owner
     ;; as-contract switches context to make contract the sender
@@ -462,7 +462,7 @@
       owner: sender,
       amount: (get amount vault),
       lock-duration: lock-duration,
-      withdrawn-at: block-height
+      withdrawn-at: stacks-block-height
     })
     
     ;; Return the withdrawn amount
@@ -497,7 +497,7 @@
     (asserts! (not (get cancelled vault)) err-vault-cancelled)
     
     ;; Validation: vault must still be locked (otherwise use regular withdraw)
-    (asserts! (< block-height (get unlock-height vault)) err-still-locked)
+    (asserts! (< stacks-block-height (get unlock-height vault)) err-still-locked)
     
     ;; Transfer STX minus penalty back to owner
     ;; Penalty stays in contract for community use
@@ -516,7 +516,7 @@
       owner: sender,
       amount: withdrawal-amount,
       penalty: penalty,
-      withdrawn-at: block-height
+      withdrawn-at: stacks-block-height
     })
     
     ;; Return withdrawal details
@@ -554,7 +554,7 @@
           {
             achievement-type: achievement-type,
             vault-id: vault-id,
-            earned-at: block-height,
+            earned-at: stacks-block-height,
             lock-duration: lock-duration
           }
         )
@@ -622,7 +622,7 @@
     (print {
       event: "emergency-withdrawal-toggled",
       enabled: (var-get emergency-withdrawal-enabled),
-      changed-at: block-height
+      changed-at: stacks-block-height
     })
     
     (ok (var-get emergency-withdrawal-enabled))
@@ -644,7 +644,7 @@
     (print {
       event: "emergency-penalty-updated",
       new-percent: new-percent,
-      changed-at: block-height
+      changed-at: stacks-block-height
     })
     
     (ok new-percent)
