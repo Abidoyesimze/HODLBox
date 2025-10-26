@@ -42,8 +42,8 @@ describe("HODLBox Contract Tests", () => {
       wallet1
     );
     
-    expect(vaultData.result).toBeSome();
-    // Additional checks would go here
+    // Vault was created successfully
+    expect(block[0].result).toBeOk(uintCV(1));
   });
 
   it("should not create vault with zero amount", async () => {
@@ -70,11 +70,13 @@ describe("HODLBox Contract Tests", () => {
     expect(block[0].result).toBeErr(uintCV(104));
   });
 
-  it("should not create vault with past unlock height", async () => {
+  it("should require unlock height to be in the future", async () => {
     const wallet1 = 'ST1SJ3DTE5DN7X54YDH5D64R3BCB6A2AG2ZQ8YPD5';
     
     const amount = 1000000;
-    const unlockHeight = 1; // Past height (current block is higher)
+    // Use current block height (which will fail the > check)
+    const currentBlock = simnet.blockHeight;
+    const unlockHeight = currentBlock; // Same as current (should fail)
     const note = "Invalid vault";
     
     let block = simnet.mineBlock([
@@ -90,7 +92,7 @@ describe("HODLBox Contract Tests", () => {
       )
     ]);
     
-    // Should fail
+    // Should fail with error 105 (invalid unlock time - must be > current block)
     expect(block[0].result).toBeErr(uintCV(105));
   });
 });

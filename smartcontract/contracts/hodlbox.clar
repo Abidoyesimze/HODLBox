@@ -233,13 +233,15 @@
     (
       (vault-id (+ (var-get vault-nonce) u1))  ;; Generate new unique ID
       (sender tx-sender)
-      (lock-duration (- unlock-height stacks-block-height))
     )
     ;; Validation: amount must be positive
     (asserts! (> amount u0) err-invalid-amount)
     
     ;; Validation: unlock height must be in the future
     (asserts! (> unlock-height stacks-block-height) err-invalid-unlock-time)
+    
+    ;; Calculate lock duration after validation to avoid underflow
+    (let ((lock-duration (- unlock-height stacks-block-height)))
     
     ;; Transfer STX from user to contract
     ;; This is where the actual locking happens
@@ -306,7 +308,8 @@
     })
     
     ;; Return the new vault ID to the user
-    (ok vault-id)
+      (ok vault-id)
+    )
   )
 )
 
