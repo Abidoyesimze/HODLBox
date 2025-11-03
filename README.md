@@ -128,13 +128,19 @@ Tests in `smartcontract/tests/hodlbox.test.ts` cover:
 - Validating vault creation rules
 - Checking unlock height requirements
 
+## Deployment
+
+**Testnet Contract Address:** `STM2GQAYZKBVAV6EYDEMM42H1Z666KAXARM5RX8X.hodlbox`
+
+**View on Explorer:** [Stacks Explorer (Testnet)](https://explorer.stacks.co/?chain=testnet)
+
 ## Architecture
 
-Built on the Stacks blockchain using Clarity. The contract is self-contained and doesn’t require external tokens or services.
+Built on the Stacks blockchain using Clarity. The contract is self-contained and doesn't require external tokens or services.
 
 **Security notes:**
 - Users retain custody; the contract enforces locks
-- Funds can’t be withdrawn before the unlock height
+- Funds can't be withdrawn before the unlock height
 - Emergency withdrawals include a configurable penalty
 - Owner-only controls for toggling emergency withdrawals and penalty
 

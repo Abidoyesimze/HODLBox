@@ -1,0 +1,17 @@
+{
+  "contract": {
+    "address": "STM2GQAYZKBVAV6EYDEMM42H1Z666KAXARM5RX8X.hodlbox",
+    "name": "hodlbox",
+    "network": "testnet"
+  },
+  "network": {
+    "rpc": "https://api.testnet.hiro.so",
+    "explorer": "https://explorer.stacks.co/?chain=testnet"
+  },
+  "deployment": {
+    "blockHeight": "deployed",
+    "date": "2024",
+    "network": "testnet"
+  }
+}
+
