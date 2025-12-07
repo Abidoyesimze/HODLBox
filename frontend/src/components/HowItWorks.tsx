@@ -23,13 +23,14 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-[var(--muted)] rounded-3xl my-20">
+    <section id="how-it-works" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold mb-4">How It Works</h2>
         <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">
-          Simple steps to start your time-locked savings journey
+          Four simple steps to secure your financial future on the blockchain
         </p>
       </div>
+      <div className="bg-[var(--muted)] rounded-3xl p-8 lg:p-12">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {steps.map((step, index) => (
           <div key={index} className="relative">
@@ -45,6 +46,17 @@ export default function HowItWorks() {
             )}
           </div>
         ))}
+      </div>
+      <div className="mt-12 text-center">
+        <div className="inline-block p-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl max-w-2xl">
+          <p className="text-lg text-[var(--text-secondary)] mb-2">
+            <strong className="text-[var(--foreground)]">Remember:</strong> Stacks blocks are produced approximately every 10 minutes.
+          </p>
+          <p className="text-sm text-[var(--text-secondary)]">
+            ~144 blocks per day • Plan your lock period accordingly
+          </p>
+        </div>
+      </div>
       </div>
     </section>
   );

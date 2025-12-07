@@ -2,8 +2,8 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import HowItWorks from '@/components/HowItWorks';
-import VaultForm from '@/components/VaultForm';
-import VaultList from '@/components/VaultList';
+import Benefits from '@/components/Benefits';
+import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 
 export default function Home() {
@@ -14,8 +14,8 @@ export default function Home() {
         <Hero />
         <Features />
         <HowItWorks />
-        <VaultForm />
-        <VaultList />
+        <Benefits />
+        <CallToAction />
       </main>
       <Footer />
     </div>

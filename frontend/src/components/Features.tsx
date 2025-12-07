@@ -35,9 +35,9 @@ export default function Features() {
   return (
     <section id="features" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold mb-4">Why Choose HODLBox?</h2>
+        <h2 className="text-4xl font-bold mb-4">Everything You Need to Save Smarter</h2>
         <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">
-          A simple, secure way to enforce your savings discipline on the blockchain
+          Powerful features that make saving on the blockchain simple, secure, and rewarding
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
