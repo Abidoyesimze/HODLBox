@@ -1,5 +1,7 @@
 'use client';
 
+import WalletButton from './WalletButton';
+
 export default function Header() {
   return (
     <header className="border-b border-[var(--border)] bg-[var(--card)]/80 backdrop-blur-sm sticky top-0 z-50 animate-fade-in">
@@ -28,9 +30,7 @@ export default function Header() {
               How It Works
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-indigo-600 group-hover:w-full transition-all duration-300"></span>
             </a>
-            <button className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-500/30 transition-all duration-300 hover:scale-105 active:scale-95 text-sm font-medium">
-              Connect Wallet
-            </button>
+            <WalletButton />
           </nav>
         </div>
       </div>

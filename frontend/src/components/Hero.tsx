@@ -14,15 +14,18 @@ export default function Hero() {
           Perfect for emergency funds, goal savings, or long-term HODLing. The smart contract keeps you honest when your willpower might not.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animation-delay-300">
-          <button className="group px-8 py-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all duration-300 shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 hover:scale-105 active:scale-95 font-medium text-lg relative overflow-hidden">
-            <span className="relative z-10">Get Started</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          </button>
           <a 
             href="#how-it-works"
+            className="group px-8 py-4 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition-all duration-300 shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/40 hover:scale-105 active:scale-95 font-medium text-lg relative overflow-hidden"
+          >
+            <span className="relative z-10">Learn How It Works</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </a>
+          <a 
+            href="#cta"
             className="px-8 py-4 border-2 border-[var(--border)] rounded-xl hover:bg-[var(--muted)] hover:border-indigo-400 transition-all duration-300 hover:scale-105 active:scale-95 font-medium text-lg"
           >
-            Learn How It Works
+            Get Started
           </a>
         </div>
       </div>
