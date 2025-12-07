@@ -1,3 +1,5 @@
+'use client';
+
 export default function Benefits() {
   const benefits = [
     {
@@ -25,8 +27,8 @@ export default function Benefits() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="text-center mb-16">
-        <h2 className="text-4xl font-bold mb-4">Why HODLBox Works</h2>
-        <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto">
+        <h2 className="text-4xl font-bold mb-4 animate-fade-in-up">Why HODLBox Works</h2>
+        <p className="text-xl text-[var(--text-secondary)] max-w-2xl mx-auto animate-fade-in-up animation-delay-100">
           Traditional savings accounts can't enforce your discipline. Smart contracts can.
         </p>
       </div>
@@ -34,10 +36,15 @@ export default function Benefits() {
         {benefits.map((benefit, index) => (
           <div
             key={index}
-            className="text-center p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:shadow-lg transition-all hover:-translate-y-1"
+            className="group text-center p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-2 hover:border-purple-400/50 animate-scale-in"
+            style={{ animationDelay: `${index * 0.12}s` }}
           >
-            <div className="text-5xl mb-4">{benefit.icon}</div>
-            <h3 className="text-xl font-semibold mb-3">{benefit.title}</h3>
+            <div className="text-5xl mb-4 transform group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300 inline-block animate-float" style={{ animationDelay: `${index * 0.6}s` }}>
+              {benefit.icon}
+            </div>
+            <h3 className="text-xl font-semibold mb-3 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+              {benefit.title}
+            </h3>
             <p className="text-[var(--text-secondary)] leading-relaxed">{benefit.description}</p>
           </div>
         ))}
