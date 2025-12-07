@@ -1,37 +1,3 @@
-export default function Features() {
-  const features = [
-    {
-      title: "Time-Locked Savings",
-      description: "Set a future block height to unlock your funds. No early withdrawals until then.",
-      icon: "🔒",
-    },
-    {
-      title: "Full Custody",
-      description: "You maintain complete control. Funds are in your vault, enforced by smart contract logic.",
-      icon: "🔑",
-    },
-    {
-      title: "Recurring Deposits",
-      description: "Add more STX to your existing vault anytime. Build your savings over time.",
-      icon: "📈",
-    },
-    {
-      title: "Achievement NFTs",
-      description: "Earn non-transferable achievement badges for reaching savings milestones.",
-      icon: "🏆",
-    },
-    {
-      title: "Emergency Withdrawal",
-      description: "Need funds early? Emergency withdrawals available with a configurable penalty.",
-      icon: "⚠️",
-    },
-    {
-      title: "Trustless & Secure",
-      description: "Built on Stacks blockchain with Clarity smart contracts. No intermediaries.",
-      icon: "🛡️",
-    },
-  ];
-
 'use client';
 
 export default function Features() {
@@ -96,4 +62,3 @@ export default function Features() {
     </section>
   );
 }
-

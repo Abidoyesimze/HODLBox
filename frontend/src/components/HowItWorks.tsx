@@ -1,27 +1,3 @@
-export default function HowItWorks() {
-  const steps = [
-    {
-      number: "1",
-      title: "Create a Vault",
-      description: "Set the amount of STX to lock and choose your unlock date (block height). Add an optional note for your savings goal.",
-    },
-    {
-      number: "2",
-      title: "Fund Your Vault",
-      description: "Deposit STX into your vault. The funds are locked immediately and cannot be withdrawn until the unlock block height.",
-    },
-    {
-      number: "3",
-      title: "Add More Anytime",
-      description: "Want to increase your savings? Add more STX to your existing vault without changing the unlock date.",
-    },
-    {
-      number: "4",
-      title: "Withdraw When Ready",
-      description: "Once the unlock block height is reached, withdraw your full amount back to your wallet. No penalties, no delays.",
-    },
-  ];
-
 'use client';
 
 export default function HowItWorks() {
@@ -93,4 +69,3 @@ export default function HowItWorks() {
     </section>
   );
 }
-
