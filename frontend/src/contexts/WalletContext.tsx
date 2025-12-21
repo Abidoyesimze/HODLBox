@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { openAuth, UserSession, AppConfig } from '@stacks/connect';
+import { authenticate, UserSession, AppConfig } from '@stacks/connect';
 import { STACKS_TESTNET, STACKS_MAINNET } from '@stacks/network';
 import { CONTRACT_ADDRESS, NETWORK } from '@/lib/constants';
 
@@ -51,23 +51,18 @@ export function WalletProvider({ children }: { children: ReactNode }) {
 
   const connectWallet = async () => {
     try {
-      openAuth({
-        appDetails: {
-          name: 'HODLBox',
-          icon: typeof window !== 'undefined' ? `${window.location.origin}/favicon.ico` : '',
-        },
-        redirectTo: '/',
-        onFinish: async () => {
-          const session = new UserSession({ appConfig });
-          if (session.isSignInPending()) {
-            const userData = await session.handlePendingSignIn();
+      await authenticate({
+        onFinish: ({ userSession: session }) => {
+          if (session) {
             setUserSession(session);
+            const userData = session.loadUserData();
             setUserData(userData);
           }
         },
         onCancel: () => {
           console.log('User canceled wallet connection');
         },
+        userSession: userSession || new UserSession({ appConfig }),
         network,
       });
     } catch (error) {
