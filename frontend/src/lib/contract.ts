@@ -3,10 +3,10 @@
  */
 
 import { CONTRACT_ADDRESS, CONTRACT_NAME, NETWORK } from './constants';
-import { StacksTestnet, StacksMainnet } from '@stacks/network';
+import { STACKS_TESTNET, STACKS_MAINNET } from '@stacks/network';
 import { callReadOnlyFunction, cvToJSON, uintCV } from '@stacks/transactions';
 
-const network = NETWORK === 'testnet' ? new StacksTestnet() : new StacksMainnet();
+const network = NETWORK === 'testnet' ? STACKS_TESTNET : STACKS_MAINNET;
 
 /**
  * Get contract address

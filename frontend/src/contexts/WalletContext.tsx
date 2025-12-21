@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { openAuth, UserSession, AppConfig } from '@stacks/connect';
-import { StacksTestnet } from '@stacks/network';
+import { STACKS_TESTNET, STACKS_MAINNET } from '@stacks/network';
 import { CONTRACT_ADDRESS, NETWORK } from '@/lib/constants';
 
 interface WalletContextType {
@@ -17,7 +17,7 @@ interface WalletContextType {
 
 const WalletContext = createContext<WalletContextType | undefined>(undefined);
 
-const network = NETWORK === 'testnet' ? new StacksTestnet() : new StacksTestnet();
+const network = NETWORK === 'testnet' ? STACKS_TESTNET : STACKS_MAINNET;
 
 const appConfig = new AppConfig(['store_write', 'publish_data'], typeof window !== 'undefined' ? window.location.origin : '');
 
