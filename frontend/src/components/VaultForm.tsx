@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { daysToBlocks, formatStx } from '@/lib/utils';
+import { formatNumber } from '@/lib/format';
 
 export default function VaultForm() {
   const [amount, setAmount] = useState('');
@@ -10,8 +12,8 @@ export default function VaultForm() {
 
   const handleLockPeriodChange = (days: string) => {
     setLockPeriod(days);
-    const daysNum = parseInt(days);
-    setEstimatedBlocks(daysNum * 144); // 144 blocks per day
+    const daysNum = parseInt(days) || 0;
+    setEstimatedBlocks(daysToBlocks(daysNum));
   };
 
   return (
@@ -77,7 +79,7 @@ export default function VaultForm() {
               className="w-full px-4 py-3 border border-[var(--border)] rounded-xl bg-[var(--background)] focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
             <p className="mt-2 text-sm text-[var(--text-secondary)]">
-              Estimated unlock block: <span className="font-mono font-semibold">+{estimatedBlocks.toLocaleString()} blocks</span>
+              Estimated unlock block: <span className="font-mono font-semibold">+{formatNumber(estimatedBlocks)} blocks</span>
               <span className="ml-2">(~{parseInt(lockPeriod) || 0} days at ~10 min/block)</span>
             </p>
           </div>
@@ -113,7 +115,7 @@ export default function VaultForm() {
               </div>
               <div className="flex justify-between">
                 <span>Unlock Blocks:</span>
-                <span className="font-mono">+{estimatedBlocks.toLocaleString()}</span>
+                <span className="font-mono">+{formatNumber(estimatedBlocks)}</span>
               </div>
             </div>
           </div>
@@ -129,4 +131,5 @@ export default function VaultForm() {
     </section>
   );
 }
+
 
