@@ -1,5 +1,7 @@
 'use client';
 
+import { formatDaysRemaining, getStatusColor, formatNumber, calculateProgress } from '@/lib/format';
+
 export default function VaultList() {
   // Mock data for UI demonstration
   const mockVaults = [
@@ -25,22 +27,8 @@ export default function VaultList() {
     },
   ];
 
-  const formatDays = (days: number) => {
-    if (days < 1) return 'Less than 1 day';
-    if (days === 1) return '1 day';
-    return `${days} days`;
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'locked':
-        return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300';
-      case 'unlocked':
-        return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300';
-      default:
-        return 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300';
-    }
-  };
+  // Import formatting utilities
+  import { formatDaysRemaining, getStatusColor, formatNumber, calculateProgress } from '@/lib/format';
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -95,15 +83,15 @@ export default function VaultList() {
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
                     <div>
                       <span className="text-[var(--text-secondary)]">Unlocks in:</span>
-                      <p className="font-semibold">{formatDays(vault.daysRemaining)}</p>
+                      <p className="font-semibold">{formatDaysRemaining(vault.daysRemaining)}</p>
                     </div>
                     <div>
                       <span className="text-[var(--text-secondary)]">Blocks remaining:</span>
-                      <p className="font-mono font-semibold">{vault.blocksRemaining.toLocaleString()}</p>
+                      <p className="font-mono font-semibold">{formatNumber(vault.blocksRemaining)}</p>
                     </div>
                     <div>
                       <span className="text-[var(--text-secondary)]">Unlock height:</span>
-                      <p className="font-mono font-semibold">{vault.unlockHeight.toLocaleString()}</p>
+                      <p className="font-mono font-semibold">{formatNumber(vault.unlockHeight)}</p>
                     </div>
                     <div>
                       <span className="text-[var(--text-secondary)]">Progress:</span>
@@ -111,7 +99,7 @@ export default function VaultList() {
                         <div
                           className="bg-gradient-to-r from-indigo-600 to-purple-600 h-2 rounded-full"
                           style={{
-                            width: `${Math.max(0, Math.min(100, ((vault.unlockHeight - vault.currentHeight - vault.blocksRemaining) / (vault.unlockHeight - vault.currentHeight)) * 100))}%`,
+                            width: `${calculateProgress(vault.currentHeight, vault.unlockHeight, vault.currentHeight - vault.blocksRemaining)}%`,
                           }}
                         />
                       </div>
