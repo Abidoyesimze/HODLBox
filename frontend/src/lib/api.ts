@@ -2,16 +2,16 @@
  * API utilities for interacting with Stacks network
  */
 
-import { StacksTestnet, StacksMainnet } from '@stacks/network';
+import { STACKS_TESTNET, STACKS_MAINNET } from '@stacks/network';
 import { NETWORK } from './constants';
 
-const network = NETWORK === 'testnet' ? new StacksTestnet() : new StacksMainnet();
+const network = NETWORK === 'testnet' ? STACKS_TESTNET : STACKS_MAINNET;
 
 /**
  * Get Stacks API base URL
  */
 export function getApiBaseUrl(): string {
-  return network.getCoreApiUrl();
+  return network.client.baseUrl;
 }
 
 /**

@@ -46,16 +46,19 @@ export default function Features() {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="group p-6 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 hover:-translate-y-2 hover:border-indigo-400/50 animate-scale-in"
+            className="group relative p-8 rounded-2xl border border-[var(--border)] bg-[var(--card)] hover:shadow-2xl hover:shadow-indigo-500/20 transition-all duration-300 hover:-translate-y-3 hover:border-indigo-400/60 animate-scale-in overflow-hidden"
             style={{ animationDelay: `${index * 0.1}s` }}
           >
-            <div className="text-4xl mb-4 transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 inline-block animate-float" style={{ animationDelay: `${index * 0.5}s` }}>
-              {feature.icon}
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative z-10">
+              <div className="text-5xl mb-5 transform group-hover:scale-125 group-hover:rotate-6 transition-transform duration-300 inline-block animate-float" style={{ animationDelay: `${index * 0.5}s` }}>
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                {feature.title}
+              </h3>
+              <p className="text-[var(--text-secondary)] leading-relaxed text-base">{feature.description}</p>
             </div>
-            <h3 className="text-xl font-semibold mb-2 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-              {feature.title}
-            </h3>
-            <p className="text-[var(--text-secondary)] leading-relaxed">{feature.description}</p>
           </div>
         ))}
       </div>
