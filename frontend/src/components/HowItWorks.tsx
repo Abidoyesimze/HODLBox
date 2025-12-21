@@ -32,7 +32,9 @@ export default function HowItWorks() {
           Four simple steps to secure your financial future on the blockchain
         </p>
       </div>
-      <div className="bg-gradient-to-br from-[var(--muted)] via-[var(--muted)] to-indigo-50 dark:to-indigo-950/20 rounded-3xl p-8 lg:p-12 animate-fade-in">
+      <div className="relative bg-gradient-to-br from-[var(--muted)] via-indigo-50/50 dark:via-indigo-950/20 to-purple-50/50 dark:to-purple-950/20 rounded-3xl p-8 lg:p-12 animate-fade-in overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/5 via-purple-500/5 to-pink-500/5 animate-gradient"></div>
+        <div className="relative z-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         {steps.map((step, index) => (
           <div 
@@ -54,8 +56,9 @@ export default function HowItWorks() {
             )}
           </div>
         ))}
+        </div>
       </div>
-      <div className="mt-12 text-center animate-fade-in animation-delay-500">
+      <div className="mt-12 text-center animate-fade-in animation-delay-500 relative z-10">
         <div className="inline-block p-6 bg-[var(--card)] border border-[var(--border)] rounded-2xl max-w-2xl shadow-sm hover:shadow-md transition-shadow duration-300">
           <p className="text-lg text-[var(--text-secondary)] mb-2">
             <strong className="text-[var(--foreground)]">Remember:</strong> Stacks blocks are produced approximately every 10 minutes.
