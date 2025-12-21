@@ -6,6 +6,7 @@ import Benefits from '@/components/Benefits';
 import UseCasesSection from '@/components/UseCasesSection';
 import SecuritySection from '@/components/SecuritySection';
 import StatsSection from '@/components/StatsSection';
+import FAQSection from '@/components/FAQSection';
 import CallToAction from '@/components/CallToAction';
 import Footer from '@/components/Footer';
 
@@ -21,6 +22,7 @@ export default function Home() {
         <UseCasesSection />
         <Benefits />
         <SecuritySection />
+        <FAQSection />
         <CallToAction />
       </main>
       <Footer />
