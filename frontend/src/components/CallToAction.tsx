@@ -9,29 +9,29 @@ export default function CallToAction() {
 
   return (
     <section id="cta" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-      <div className="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-12 lg:p-16 text-center text-white overflow-hidden animate-fade-in animate-gradient">
+      <div className="relative bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-12 lg:p-16 text-center text-white overflow-hidden">
         <DripEffect count={6} color="rgba(255, 255, 255, 0.1)" />
         
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-700/50 via-purple-700/50 to-pink-700/50 opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
         
         <div className="relative z-10">
-          <div className="mb-6 animate-fade-in-up">
+          <div className="mb-6">
             <span className="inline-block px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-semibold">
               ✨ Start Your Savings Journey Today
             </span>
           </div>
           
-          <h2 className="text-4xl lg:text-6xl font-extrabold mb-6 animate-fade-in-up animation-delay-100">
+          <h2 className="text-4xl lg:text-6xl font-extrabold mb-6">
             {isConnected ? 'Ready to Create Your Vault?' : 'Ready to Start Saving?'}
           </h2>
           
-          <p className="text-xl lg:text-2xl mb-10 opacity-95 max-w-3xl mx-auto leading-relaxed animate-fade-in-up animation-delay-200">
+          <p className="text-xl lg:text-2xl mb-10 opacity-95 max-w-3xl mx-auto leading-relaxed">
             {isConnected 
               ? 'Create your first time-locked vault and start building your savings on the blockchain. Your future self will thank you.' 
               : 'Connect your Stacks wallet and create your first time-locked vault in minutes. Take control of your financial future with blockchain-enforced discipline.'}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animation-delay-300">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {isConnected ? (
               <a
                 href="/dashboard"
