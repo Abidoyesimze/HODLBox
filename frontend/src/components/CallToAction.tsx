@@ -31,7 +31,7 @@ export default function CallToAction() {
               : 'Connect your Stacks wallet and create your first time-locked vault in minutes. Take control of your financial future with blockchain-enforced discipline.'}
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-in-up animation-delay-300">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up animation-delay-300">
             {isConnected ? (
               <a
                 href="/dashboard"
@@ -50,34 +50,6 @@ export default function CallToAction() {
                 <WalletButton />
               </div>
             )}
-            <a
-              href="https://explorer.stacks.co/?chain=testnet"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-10 py-5 border-2 border-white/40 rounded-xl hover:bg-white/20 hover:border-white/60 backdrop-blur-sm transition-all duration-300 hover:scale-105 active:scale-95 font-semibold text-lg"
-            >
-              View on Explorer
-            </a>
-          </div>
-          
-          <div className="mt-12 pt-8 border-t border-white/30 animate-fade-in animation-delay-400">
-            <div className="flex flex-wrap justify-center items-center gap-6 mb-4">
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">🔗</span>
-                <span className="text-sm opacity-90">Built on Stacks</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">🛡️</span>
-                <span className="text-sm opacity-90">Clarity Smart Contracts</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-2xl">🔓</span>
-                <span className="text-sm opacity-90">Non-Custodial</span>
-              </div>
-            </div>
-            <p className="text-xs opacity-70 font-mono break-all max-w-2xl mx-auto">
-              Contract: STM2GQAYZKBVAV6EYDEMM42H1Z666KAXARM5RX8X.hodlbox
-            </p>
           </div>
         </div>
       </div>
