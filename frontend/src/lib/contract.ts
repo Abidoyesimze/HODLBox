@@ -4,8 +4,7 @@
 
 import { CONTRACT_ADDRESS, CONTRACT_NAME, NETWORK } from './constants';
 import { StacksTestnet, StacksMainnet } from '@stacks/network';
-import { callReadOnlyFunction, cvToJSON } from '@stacks/transactions';
-import { standardPrincipalCV } from '@stacks/transactions';
+import { callReadOnlyFunction, cvToJSON, uintCV } from '@stacks/transactions';
 
 const network = NETWORK === 'testnet' ? new StacksTestnet() : new StacksMainnet();
 
@@ -52,13 +51,14 @@ export async function callReadOnly(
  * Get vault data
  */
 export async function getVault(vaultId: number, senderAddress?: string) {
-  return callReadOnly('get-vault', [standardPrincipalCV(vaultId)], senderAddress);
+  return callReadOnly('get-vault', [uintCV(vaultId)], senderAddress);
 }
 
 /**
  * Get user's vaults
  */
 export async function getUserVaults(userAddress: string) {
+  const { standardPrincipalCV } = await import('@stacks/transactions');
   return callReadOnly('get-user-vaults', [standardPrincipalCV(userAddress)], userAddress);
 }
 
@@ -66,13 +66,14 @@ export async function getUserVaults(userAddress: string) {
  * Check if vault is unlocked
  */
 export async function isVaultUnlocked(vaultId: number) {
-  return callReadOnly('is-vault-unlocked', [standardPrincipalCV(vaultId)]);
+  return callReadOnly('is-vault-unlocked', [uintCV(vaultId)]);
 }
 
 /**
  * Get user statistics
  */
 export async function getUserStats(userAddress: string) {
+  const { standardPrincipalCV } = await import('@stacks/transactions');
   return callReadOnly('get-user-stats', [standardPrincipalCV(userAddress)], userAddress);
 }
 
