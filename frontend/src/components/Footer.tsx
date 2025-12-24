@@ -1,5 +1,7 @@
 'use client';
 
+import WalletConnectBadge from './WalletConnectBadge';
+
 export default function Footer() {
   return (
     <footer className="border-t border-[var(--border)] mt-20 animate-fade-in">
@@ -62,7 +64,12 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-8 pt-8 border-t border-[var(--border)] text-center text-sm text-[var(--text-secondary)] animate-fade-in animation-delay-400">
-          <p>© {new Date().getFullYear()} HODLBox. Built on Stacks blockchain.</p>
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex items-center gap-4">
+              <WalletConnectBadge />
+            </div>
+            <p>© {new Date().getFullYear()} HODLBox. Built on Stacks blockchain.</p>
+          </div>
         </div>
       </div>
     </footer>
