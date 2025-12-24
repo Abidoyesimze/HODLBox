@@ -1,6 +1,7 @@
 'use client';
 
 import WalletButton from './WalletButton';
+import BlockHeightDisplay from './BlockHeightDisplay';
 
 export default function Header() {
   return (
@@ -16,7 +17,7 @@ export default function Header() {
               HODLBox
             </span>
           </a>
-          <nav className="hidden md:flex items-center space-x-10">
+          <nav className="hidden md:flex items-center space-x-6">
             <a 
               href="#features" 
               className="text-sm font-semibold text-[var(--text-secondary)] hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-200 relative group py-2"
@@ -38,6 +39,9 @@ export default function Header() {
               FAQ
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 group-hover:w-full transition-all duration-300"></span>
             </a>
+            <div className="hidden lg:block">
+              <BlockHeightDisplay />
+            </div>
             <WalletButton />
           </nav>
         </div>
